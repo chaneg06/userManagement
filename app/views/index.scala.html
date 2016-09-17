@@ -1,0 +1,78 @@
+@(users: List[User], userForm: Form[CreateUserForm])(implicit messages: Messages)
+
+@import helper._
+
+@main("User Management") {
+    
+    <h1>@users.size users(s)</h1>  
+    
+        <link rel="stylesheet" href="styles.css">
+
+            <table>
+            <tr>
+                <td>
+                    @form(routes.UserController.addUser) {
+                            <input type="submit" value="Add new user">
+                        }
+                </td>
+                <td colspan="2">&nbsp;</td>
+            </tr>
+                <tr>
+                    <td>
+                       @form(routes.UserController.usersFiltered("true")) {
+                            <input type="submit" value="Show active users">
+                        } 
+                    </td>
+                    <td>
+                        @form(routes.UserController.usersFiltered("false")) {
+                            <input type="submit" value="Show inactive users">
+                        }
+                    </td>
+                    <td>
+                        @form(routes.UserController.users) {
+                            <input type="submit" value="Show all users">
+                        }
+                    </td>
+                </tr>
+            </table>
+         <div style="width:30%; height: 500px; overflow: auto;">   
+    <table class="trstyle">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>IsActive</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                 @users.map { user =>
+                <tr>
+                    <td>
+                         @user.id 
+                    </td>
+                    <td>
+                        @user.name
+                    </td>
+                    <td>
+                         @user.isActive
+                    </td>
+                    <td>
+                        @form(routes.UserController.deleteUser(user.id)) {
+                            <input type="submit" value="Delete">
+                        }
+                    </td>
+                    <td>
+                        @form(routes.UserController.editUser(user.id)) {
+                            <input type="submit" value="Edit">
+                        }
+                    </td>
+                </tr>
+                }
+                </tbody>
+            </table>
+    </div>
+     
+    
+    
+}

@@ -1,0 +1,29 @@
+@(id: Long, userForm: Form[User])(implicit messages: Messages)
+
+@import helper._
+
+@main("User Management") {
+    
+    <h1>Edit User details</h1>
+    
+    @form(routes.UserController.updateUser(id)) {
+        
+        <fieldset>
+            @inputText(userForm("id"), '_label -> "Id")
+            @inputText(userForm("name"), '_label -> "Name")
+            @inputText(userForm("isActive"), '_label -> "IsActive")
+            
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Save this user" class="btn primary"> or 
+            <a href=@routes.UserController.users() class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+    @form(routes.UserController.deleteUser(id)) {
+        <input type="submit" value="Delete this user" class="btn danger">
+    }
+    
+}

@@ -1,0 +1,24 @@
+{
+    "users": [
+        {
+            "id": "928",
+            "name": "Jet Jackson",
+            "isActive": "true"
+        },
+        {
+            "id": "472",
+            "name": "Chett Wayneright",
+            "isActive": "true"
+        },
+        {
+            "id": "301",
+            "name": "Lauren Cornwell",
+            "isActive": "false"
+        },
+        {
+            "id": "2",
+            "name": "Richard Bagel",
+            "isActive": "true"
+        }
+    ]
+}
