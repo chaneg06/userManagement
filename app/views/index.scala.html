@@ -6,8 +6,7 @@
     
     <h1>@users.size users(s)</h1>  
     
-        <link rel="stylesheet" href="styles.css">
-
+        
             <table>
             <tr>
                 <td>
@@ -15,25 +14,14 @@
                             <input type="submit" value="Add new user">
                         }
                 </td>
-                <td colspan="2">&nbsp;</td>
-            </tr>
-                <tr>
-                    <td>
-                       @form(routes.UserController.usersFiltered("true")) {
-                            <input type="submit" value="Show active users">
-                        } 
-                    </td>
-                    <td>
-                        @form(routes.UserController.usersFiltered("false")) {
-                            <input type="submit" value="Show inactive users">
-                        }
-                    </td>
-                    <td>
-                        @form(routes.UserController.users) {
-                            <input type="submit" value="Show all users">
-                        }
-                    </td>
-                </tr>
+                <td>Filter:
+                    <select id="filter">
+                        <option value="all">Show All</option>
+                        <option value="true">Active</option>
+                        <option value="false">InActive</option>
+                    </select>
+
+                    <button id='btnFilter'>Go</button></td>
             </table>
          <div style="width:30%; height: 500px; overflow: auto;">   
     <table class="trstyle">
@@ -54,7 +42,7 @@
                     <td>
                         @user.name
                     </td>
-                    <td>
+                    <td class="isActive">
                          @user.isActive
                     </td>
                     <td>
