@@ -11,7 +11,7 @@ GET     /                       controllers.UserController.index
                                 
 # Users          
 GET     /users                          controllers.UserController.users
-GET     /usersfiltered/:isActive        controllers.UserController.usersFiltered(isActive:String)
+GET     /users/:isActive        controllers.UserController.usersFiltered(isActive:String)
 
 GET     /users/new              controllers.UserController.addUser
 POST    /users                  controllers.UserController.save
